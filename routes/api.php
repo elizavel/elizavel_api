@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AppControllers\AccessController;
+use App\Http\Controllers\AppControllers\AppUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/test', function(Request $request) {
     echo 'You entered '.$request->test;
 });
+
+Route::post('/user/create', [AppUserController::class,'createRecord']); 
+Route::post('/user/update', [AppUserController::class,'updateRecord']);
+Route::post('/user/delete', [AppUserController::class,'deleteRecord']);
+
+Route::post('/access/login', [AccessController::class,'userLogin']);
